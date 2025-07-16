@@ -1,0 +1,303 @@
+/* Build Agent Plugin Styles */
+
+.build-agent-container {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 15px 0;
+}
+
+.build-agent-input-section {
+    margin-bottom: 20px;
+}
+
+.build-agent-input-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+#build-agent-prompt {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    resize: vertical;
+    transition: border-color 0.15s ease-in-out;
+}
+
+#build-agent-prompt:focus {
+    border-color: #2271b1;
+    outline: 0;
+    box-shadow: 0 0 0 1px #2271b1;
+}
+
+.build-agent-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#build-agent-generate {
+    background: #2271b1;
+    border-color: #2271b1;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 3px;
+    font-weight: 600;
+    transition: all 0.15s ease-in-out;
+}
+
+#build-agent-generate:hover:not(:disabled) {
+    background: #135e96;
+    border-color: #135e96;
+}
+
+#build-agent-generate:disabled {
+    background: #8c8f94;
+    border-color: #8c8f94;
+    cursor: not-allowed;
+}
+
+#build-agent-insert {
+    background: #00a32a;
+    border-color: #00a32a;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 3px;
+    font-weight: 600;
+    transition: all 0.15s ease-in-out;
+}
+
+#build-agent-insert:hover {
+    background: #008a20;
+    border-color: #008a20;
+}
+
+#build-agent-loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: #f0f6fc;
+    border: 1px solid #c0d7ed;
+    border-radius: 4px;
+    color: #0969da;
+}
+
+#build-agent-loading .spinner {
+    float: none;
+    margin: 0;
+}
+
+#build-agent-preview {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#build-agent-preview h4 {
+    margin: 0 0 15px 0;
+    color: #1d2327;
+    font-size: 16px;
+}
+
+#build-agent-blocks-preview {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.block-preview {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #f6f7f7;
+    border-left: 4px solid #2271b1;
+    border-radius: 0 4px 4px 0;
+}
+
+.block-preview:last-child {
+    margin-bottom: 0;
+}
+
+.block-preview strong {
+    color: #2271b1;
+    font-weight: 600;
+}
+
+.block-preview em {
+    color: #646970;
+    font-style: normal;
+    font-weight: 500;
+}
+
+#build-agent-error {
+    padding: 15px;
+    background: #fcf0f1;
+    border: 1px solid #d63638;
+    border-radius: 4px;
+    color: #d63638;
+    margin-top: 15px;
+}
+
+#build-agent-error p {
+    margin: 0;
+}
+
+/* Settings page styles */
+.build-agent-settings-wrap {
+    max-width: 800px;
+}
+
+.build-agent-settings-wrap .form-table th {
+    width: 200px;
+    padding: 20px 10px 20px 0;
+}
+
+.build-agent-settings-wrap .form-table td {
+    padding: 15px 10px;
+}
+
+.build-agent-settings-wrap .regular-text {
+    width: 100%;
+    max-width: 400px;
+}
+
+.build-agent-settings-wrap .description {
+    color: #646970;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Modal styles */
+#build-agent-html-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border: 1px solid #c3c4c7;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 10000;
+    max-width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+#build-agent-html-modal h3 {
+    margin-top: 0;
+    color: #1d2327;
+}
+
+#build-agent-html-modal textarea {
+    width: 100%;
+    height: 300px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    padding: 10px;
+    resize: vertical;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .build-agent-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .build-agent-buttons button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #build-agent-html-modal {
+        max-width: 95%;
+        max-height: 95%;
+        padding: 15px;
+    }
+
+    #build-agent-html-modal textarea {
+        height: 200px;
+    }
+}
+
+/* Animation for loading state */
+@keyframes build-agent-pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.build-agent-generating {
+    animation: build-agent-pulse 1.5s ease-in-out infinite;
+}
+
+/* Success notice styling */
+.build-agent-success {
+    background: #00a32a;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+/* Tooltip styles */
+.build-agent-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.build-agent-tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #1d2327;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.build-agent-tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1d2327 transparent transparent transparent;
+}
+
+.build-agent-tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
