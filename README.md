@@ -7,7 +7,6 @@ A powerful WordPress plugin that uses Azure OpenAI to generate WordPress blocks 
 - 🤖 **AI-Powered Block Generation**: Uses Azure OpenAI to generate WordPress Gutenberg blocks
 - 🎨 **Natural Language Input**: Describe what you want in plain English
 - 🧱 **WordPress Core Blocks**: Generates semantic, responsive layouts using core WordPress blocks
-- ⚡ **Real-time Preview**: See generated blocks before inserting them into your page
 - 🔧 **Easy Integration**: Works seamlessly with the WordPress block editor
 - 🎯 **Smart Insertion**: Automatically inserts blocks into the current page/post
 - 📱 **Responsive Design**: Generated layouts work across all device sizes
