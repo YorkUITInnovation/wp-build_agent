@@ -10,7 +10,13 @@ jQuery(document).ready(function($) {
             return;
         }
 
-        generateBlocks(prompt);
+        // Get selected categories
+        const selectedCategories = [];
+        $('input[name="build_agent_categories[]"]:checked').each(function() {
+            selectedCategories.push($(this).val());
+        });
+
+        generateBlocks(prompt, selectedCategories);
     });
 
     // Handle insert button click
@@ -20,7 +26,7 @@ jQuery(document).ready(function($) {
         }
     });
 
-    function generateBlocks(prompt) {
+    function generateBlocks(prompt, categories) {
         // Show loading state
         $('#build-agent-loading').show();
         $('#build-agent-preview').hide();
@@ -28,12 +34,17 @@ jQuery(document).ready(function($) {
         $('#build-agent-insert').hide();
         $('#build-agent-generate').prop('disabled', true).text(buildAgent.strings.generating);
 
+        // Calculate timeout - use WordPress setting with buffer
+        const timeoutMs = (buildAgent.timeout || 30) * 1000 + 10000; // Add 10 second buffer
+
         $.ajax({
             url: buildAgent.ajaxUrl,
             type: 'POST',
+            timeout: timeoutMs, // Set explicit timeout for AJAX request
             data: {
                 action: 'build_agent_generate',
                 prompt: prompt,
+                categories: categories,
                 nonce: buildAgent.nonce
             },
             success: function(response) {
@@ -52,7 +63,25 @@ jQuery(document).ready(function($) {
             error: function(xhr, status, error) {
                 $('#build-agent-loading').hide();
                 $('#build-agent-generate').prop('disabled', false).text('Generate Blocks');
-                showError(buildAgent.strings.error + ' (' + error + ')');
+
+                let errorMessage = buildAgent.strings.error;
+
+                if (status === 'timeout') {
+                    errorMessage = 'Request timed out. The AI is taking longer than expected to generate blocks. Try: 1) Simplifying your request, 2) Increasing the timeout in Build Agent settings, or 3) Using fewer block categories.';
+                } else if (xhr.responseText) {
+                    try {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.data) {
+                            errorMessage = response.data;
+                        }
+                    } catch (e) {
+                        errorMessage += ' (' + error + ')';
+                    }
+                } else {
+                    errorMessage += ' (' + error + ')';
+                }
+
+                showError(errorMessage);
             }
         });
     }
@@ -171,4 +200,3 @@ jQuery(document).ready(function($) {
         this.style.height = (this.scrollHeight) + 'px';
     });
 });
-
